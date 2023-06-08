@@ -2,7 +2,6 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    let greet = Greeting().greeting()
     @State private var user: String = "Pending"
     
     var body: some View {
@@ -17,7 +16,7 @@ struct ContentView: View {
                     }
                 )
             }, label: {
-                Text(greet)
+                Text("Get User")
             })
             Spacer().frame(height: 50)
             Text(user)

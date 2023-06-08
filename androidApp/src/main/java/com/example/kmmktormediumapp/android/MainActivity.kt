@@ -14,7 +14,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.kmmktormediumapp.Greeting
 import com.example.kmmktormediumapp.provider.Provider
 import kotlinx.coroutines.launch
 
@@ -37,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     var user by remember {
                         mutableStateOf("Pending")
                     }
-                    Greeting(Greeting().greeting(), user){
+                    Greeting(user){
                         coroutineScope.launch {
                             user = provider.getUser()
                         }
@@ -49,14 +48,13 @@ class MainActivity : ComponentActivity() {
 
 
     @Composable
-    fun Greeting(text: String, user: String, onClick: () -> Unit) {
+    fun Greeting(user: String, onClick: () -> Unit) {
         Column {
             Button(onClick = onClick) {
-                Text(text = text)
+                Text(text = "Get User")
             }
             Spacer(modifier = Modifier.height(24.dp))
             Text(user)
         }
     }
-
 }
